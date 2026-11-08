@@ -1,0 +1,1 @@
+.inner{width:100%;height:100%;max-width:calc(var(--max) + var(--inner-padding-inline)*2);padding-inline:var(--inner-padding-inline);box-sizing:border-box;text-align:center;margin:0 auto}.inner.ty_full{max-width:none;padding-inline:0}

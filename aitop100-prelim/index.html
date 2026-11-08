@@ -1,0 +1,721 @@
+<!doctype html>
+<html lang="ko" data-theme="keynote">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI_TOP_100 예선 탈락썰</title>
+<meta name="description" content="AI_TOP_100 2026 예선 참가 경험과 탈락 원인 공유">
+<meta name="deck:date" content="2026-11-05">
+<meta name="deck:tags" content="슬라이드, AI_TOP_100, 에이전트, 회고">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+/* ===== dohwaseo deck engine v1 — 1920x1080 stage, scaled to fit ===== */
+:root {
+  --w: 1920px;
+  --h: 1080px;
+  --pad-x: 120px;
+  --pad-y: 96px;
+  --gap: 48px;
+  --radius: 20px;
+  --font: 'Pretendard Variable', Pretendard, 'Apple SD Gothic Neo', -apple-system, sans-serif;
+  --mono: 'JetBrains Mono', 'SF Mono', Menlo, Consolas, monospace;
+  /* type scale: never go below --fs-caption */
+  --fs-display: 112px;
+  --fs-h1: 64px;
+  --fs-h2: 44px;
+  --fs-body: 36px;
+  --fs-small: 28px;
+  --fs-caption: 24px;
+}
+/* report: 사내 보고·기획 공유 (light) */
+[data-theme='report'] {
+  --bg: #FFFFFF; --surface: #F2F4F6; --line: #E5E8EB;
+  --text: #191F28; --sub: #4E5968; --muted: #5F6975;
+  --accent: #1B64DA; --accent-strong: #3182F6; --on-accent: #FFFFFF;
+  --good: #0E7C4A; --bad: #D22030; --letterbox: #E9ECEF;
+  --code-bg: #1A1E25; --code-text: #E8EAED;
+}
+/* tech: 기술 공유·스터디 (dark) */
+[data-theme='tech'] {
+  --bg: #0F1115; --surface: #1A1E25; --line: #2A2F38;
+  --text: #E8EAED; --sub: #AEB5C0; --muted: #8A93A0;
+  --accent: #5CC8FF; --accent-strong: #5CC8FF; --on-accent: #0F1115;
+  --good: #4ADE80; --bad: #FF7A7A; --letterbox: #050608;
+  --code-bg: #161A20; --code-text: #E8EAED;
+}
+/* keynote: 외부·대규모 발표 (bold dark) */
+[data-theme='keynote'] {
+  --bg: #111111; --surface: #1E1E1E; --line: #333333;
+  --text: #FFFFFF; --sub: #C7C7C7; --muted: #9A9A9A;
+  --accent: #FEE500; --accent-strong: #FEE500; --on-accent: #111111;
+  --good: #4ADE80; --bad: #FF7A7A; --letterbox: #000000;
+  --code-bg: #1E1E1E; --code-text: #F5F5F5;
+  --fs-h1: 72px;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; overflow: hidden; background: var(--letterbox); }
+body { font-family: var(--font); color: var(--text); -webkit-font-smoothing: antialiased; word-break: keep-all; overflow-wrap: break-word; }
+.deck { position: absolute; left: 50%; top: 50%; width: var(--w); height: var(--h); transform: translate(-50%, -50%) scale(var(--scale, 1)); }
+.slide { position: absolute; inset: 0; display: none; flex-direction: column; gap: var(--gap); padding: var(--pad-y) var(--pad-x); background: var(--bg); overflow: hidden; }
+.slide.is-active { display: flex; }
+
+/* ----- text primitives ----- */
+.eyebrow { margin: 0; font-size: var(--fs-small); font-weight: 600; color: var(--accent); letter-spacing: -0.01em; }
+.headline { margin: 0; font-size: var(--fs-h1); font-weight: 700; line-height: 1.25; letter-spacing: -0.025em; }
+.slide-head { display: flex; flex-direction: column; gap: 16px; }
+.slide-body { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 32px; min-height: 0; font-size: var(--fs-body); line-height: 1.45; }
+.slide-body p { margin: 0; }
+.sub { color: var(--sub); }
+.caption { font-size: var(--fs-caption); color: var(--muted); }
+.source { position: absolute; left: var(--pad-x); bottom: 40px; margin: 0; font-size: var(--fs-caption); color: var(--muted); }
+mark, .hl { background: none; color: var(--accent); font-weight: 700; }
+strong { font-weight: 700; }
+.notes { display: none; }
+
+/* ----- lists ----- */
+.points { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 28px; }
+.points > li { position: relative; padding-left: 44px; }
+.points > li::before { content: ''; position: absolute; left: 8px; top: 0.6em; width: 14px; height: 14px; border-radius: 50%; background: var(--accent); }
+.points > li .sub { display: block; font-size: var(--fs-small); margin-top: 6px; }
+ol.points { counter-reset: n; }
+ol.points > li { padding-left: 64px; counter-increment: n; }
+ol.points > li::before { content: counter(n); top: 0.1em; left: 0; width: 44px; height: 44px; display: grid; place-items: center; font-size: var(--fs-small); font-weight: 700; color: var(--on-accent); }
+
+/* ----- layouts ----- */
+[data-layout='title'] { justify-content: center; gap: 32px; }
+[data-layout='title'] .headline { font-size: var(--fs-display); line-height: 1.15; }
+[data-layout='title'] .meta { font-size: var(--fs-small); color: var(--sub); }
+
+[data-layout='section'] { justify-content: center; }
+[data-layout='section'] .section-no { font-size: var(--fs-h2); font-weight: 700; color: var(--accent); }
+[data-layout='section'] .headline { font-size: 96px; }
+
+[data-layout='statement'] { justify-content: center; }
+[data-layout='statement'] .headline { font-size: 88px; line-height: 1.2; max-width: 1500px; }
+[data-layout='statement'] .slide-body { flex: 0; }
+
+[data-layout='closing'] { justify-content: center; align-items: flex-start; }
+[data-layout='closing'] .headline { font-size: 96px; }
+
+.cols { display: grid; grid-template-columns: repeat(var(--cols, 2), 1fr); gap: var(--gap); align-items: stretch; }
+.card { background: var(--surface); border-radius: var(--radius); padding: 44px 48px; display: flex; flex-direction: column; gap: 16px; }
+.card h3 { margin: 0; font-size: var(--fs-h2); line-height: 1.3; letter-spacing: -0.02em; }
+.card p { font-size: var(--fs-small); color: var(--sub); }
+.card.is-key { outline: 4px solid var(--accent); }
+.card .tag { align-self: flex-start; font-size: var(--fs-caption); font-weight: 600; padding: 6px 16px; border-radius: 999px; background: var(--bg); color: var(--sub); }
+.card.is-bad .tag { color: var(--bad); }
+.card.is-good .tag { color: var(--good); }
+
+.stats { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: var(--gap); }
+.stat { display: flex; flex-direction: column; gap: 12px; }
+.stat .num { font-size: 140px; font-weight: 800; line-height: 1; letter-spacing: -0.04em; color: var(--accent-strong); font-variant-numeric: tabular-nums; }
+.stat .num small { font-size: 56px; font-weight: 700; margin-left: 4px; }
+.stat .label { font-size: var(--fs-body); font-weight: 600; }
+.stat .sub { font-size: var(--fs-small); }
+
+.flow { display: flex; align-items: stretch; gap: 0; }
+.flow .step { flex: 1; background: var(--surface); border-radius: var(--radius); padding: 40px 36px; display: flex; flex-direction: column; gap: 12px; }
+.flow .step b { font-size: var(--fs-h2); line-height: 1.3; }
+.flow .step span { font-size: var(--fs-small); color: var(--sub); }
+.flow .arrow { flex: 0 0 72px; display: grid; place-items: center; font-size: 48px; color: var(--muted); }
+.flow .step.is-key { background: var(--accent); color: var(--on-accent); }
+.flow .step.is-key span { color: inherit; opacity: 0.85; }
+
+figure { margin: 0; display: flex; flex-direction: column; gap: 16px; align-items: center; min-height: 0; }
+figure svg, figure img { max-width: 100%; max-height: 640px; }
+figcaption { font-size: var(--fs-caption); color: var(--muted); }
+
+blockquote { margin: 0; font-size: 64px; font-weight: 600; line-height: 1.35; letter-spacing: -0.02em; }
+blockquote cite { display: block; margin-top: 32px; font-size: var(--fs-small); font-style: normal; color: var(--sub); }
+
+table.data { border-collapse: collapse; width: 100%; font-size: var(--fs-small); }
+table.data th, table.data td { padding: 20px 24px; text-align: left; border-bottom: 2px solid var(--line); }
+table.data th { color: var(--sub); font-weight: 600; }
+table.data td.num { text-align: right; font-variant-numeric: tabular-nums; }
+table.data tr.is-key td { color: var(--accent); font-weight: 700; }
+
+pre.code { margin: 0; padding: 40px 48px; border-radius: var(--radius); background: var(--code-bg); color: var(--code-text); font-family: var(--mono); font-size: 28px; line-height: 1.5; overflow: hidden; }
+pre.code code { font-family: inherit; background: none; padding: 0; }
+pre.code .hl-line { display: inline-block; width: 100%; background: rgba(92, 200, 255, 0.14); }
+code { font-family: var(--mono); font-size: 0.9em; padding: 2px 10px; border-radius: 8px; background: var(--surface); }
+
+.callout { border-left: 8px solid var(--accent); padding: 20px 32px; background: var(--surface); border-radius: 0 var(--radius) var(--radius) 0; font-size: var(--fs-body); }
+
+/* ----- HUD ----- */
+.hud { position: fixed; left: 0; right: 0; bottom: 0; height: 6px; background: transparent; z-index: 10; }
+.hud .progress { height: 100%; width: 0; background: var(--accent); transition: width 0.2s ease; }
+/* PPT 형식 조작 막대 — 슬라이드 밖 아래 여백(--bar)에 쪽 번호와 ◀ ▶ 를 둔다. 슬라이드를 가리지 않는다 */
+.controls { position: fixed; right: 20px; bottom: calc((var(--bar) - 36px) / 2); display: flex; align-items: center; gap: 8px; z-index: 10; }
+.pager { font: 600 15px var(--font); color: var(--muted); font-variant-numeric: tabular-nums; margin-right: 6px; }
+.nav-btn { width: 36px; height: 36px; border: 0; border-radius: 8px; background: rgba(127, 127, 127, 0.22); color: var(--muted); font-size: 14px; cursor: pointer; display: grid; place-items: center; }
+.nav-btn:hover { background: rgba(127, 127, 127, 0.36); color: var(--text, inherit); }
+.nav-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.nav-btn:disabled { opacity: 0.35; cursor: default; }
+.notes-panel { position: fixed; left: 0; right: 0; bottom: 0; max-height: 40vh; overflow: auto; padding: 20px 28px 32px; background: rgba(17, 17, 17, 0.94); color: #F5F5F5; font: 18px/1.6 var(--font); white-space: pre-line; z-index: 20; display: none; }
+body.show-notes .notes-panel { display: block; }
+body.is-render .hud, body.is-render .controls { display: none; }
+
+/* ----- print / PDF: one slide per page ----- */
+@media print {
+  @page { size: 1920px 1080px; margin: 0; }
+  html, body { height: auto; overflow: visible; background: none; }
+  .deck { position: static; transform: none; }
+  .slide { display: flex; position: relative; width: var(--w); height: var(--h); break-after: page; }
+  .hud, .controls, .notes-panel { display: none !important; }
+}
+/* deck */
+.slide-body{justify-content:flex-start;gap:24px;line-height:1.38}
+.slide-body>*{min-height:0}
+.grid{display:grid;grid-template-columns:var(--l) var(--r);gap:48px;min-height:0;align-items:start}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:center}
+.grid3.wide{gap:40px;align-items:start;flex:1}
+.grid2eq{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+.col{display:flex;flex-direction:column;gap:20px;min-width:0}
+.fs{font-size:var(--fs-body)!important;color:var(--text)!important;font-weight:600}
+.points.tight{gap:14px}
+.points.tight>li{padding-left:36px}
+.points>li::before{left:2px;width:12px;height:12px;border-radius:2px;transform:rotate(45deg)}
+.points>li.mk{color:var(--accent);font-weight:700}
+.points.smallish{font-size:30px;gap:10px}
+.points.loud{font-size:48px;line-height:1.3;gap:40px;font-weight:500}
+.points.loud>li{padding-left:48px}
+.points.loud>li::before{top:.5em}
+.slide-body code{background:rgba(255,255,255,.1);color:var(--text)}
+.caption{margin:0}
+/* signature: captures framed as the real thing */
+.shot{position:relative;display:block;border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 18px 50px rgba(0,0,0,.55)}
+.shot img{display:block;width:100%;height:auto;max-height:none}
+.shot.web{padding-top:30px;background:#2C2C2E}
+.shot.web::before{content:'';position:absolute;left:14px;top:9px;width:56px;height:12px;background:radial-gradient(circle at 6px 6px,#FF5F57 5px,transparent 5.5px),radial-gradient(circle at 26px 6px,#FEBC2E 5px,transparent 5.5px),radial-gradient(circle at 46px 6px,#28C840 5px,transparent 5.5px)}
+.shot.chat{background:#BACADD;display:flex;align-items:center;justify-content:center}
+.shot.chat img{width:auto;max-width:100%;max-height:100%}
+.over{position:absolute;left:0;top:30px;width:100%;height:calc(100% - 30px);max-height:none!important}
+.ring{position:absolute;border:5px solid #E8212B;border-radius:12px}
+/* time rail across the day section */
+.rail{position:absolute;left:var(--pad-x);right:var(--pad-x);top:60px;height:4px;background:var(--line);border-radius:2px}
+.rail::before,.rail::after{position:absolute;top:-46px;font:500 24px var(--mono);color:var(--muted)}
+.rail::before{content:'10:00';left:0}.rail::after{content:'15:00';right:0}
+.rail u{position:absolute;left:0;top:0;bottom:0;width:calc(var(--t)*100%);background:var(--accent);border-radius:2px}
+.rail em{position:absolute;left:calc(var(--t)*100%);top:-8px;width:20px;height:20px;margin-left:-10px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 5px var(--bg)}
+[data-part='fail']{--accent:#FF7A7A;--accent-strong:#FF7A7A;--on-accent:#111}
+.eyebrow{font-family:var(--font)}
+.stamp{font-family:var(--mono);color:var(--accent);font-size:var(--fs-body)}
+/* S1 */
+[data-layout='title']{justify-content:flex-end;padding-bottom:128px}
+[data-layout='title'] .slide-body{flex:none;position:static}
+.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 20%}
+.scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,17,17,.15) 0%,rgba(17,17,17,.6) 42%,rgba(17,17,17,.97) 82%)}
+[data-layout='title'] .slide-head{position:relative;z-index:1}
+[data-layout='title'] .source{z-index:1}
+.lift{position:relative;z-index:1}
+.meta.big{font-size:var(--fs-body);color:var(--text);line-height:1.4;margin:0}
+.ieum{position:absolute;right:120px;bottom:128px;z-index:1;display:flex;flex-direction:column;align-items:center;gap:8px;font-size:var(--fs-caption);color:var(--sub)}
+.ieum img{width:120px;height:120px;border-radius:50%;display:block}
+/* S5 */
+.stack-wrap{display:flex;gap:28px;align-items:stretch}
+.stack{flex:1;display:flex;flex-direction:column;gap:10px}
+.swap-tag{font-size:var(--fs-small);color:var(--accent);font-weight:600}
+.ly-row{display:flex;gap:10px}.lys{flex:1;display:flex;flex-direction:column;gap:8px}
+.ly{display:flex;align-items:center;gap:28px;padding:9px 32px;border:3px dashed var(--accent);border-radius:12px;font-size:var(--fs-body)}
+.ly b{font:700 36px var(--mono);color:var(--accent);width:40px}
+.know{width:150px;display:grid;place-items:center;border:3px dashed var(--accent);border-radius:12px;font-size:var(--fs-body)}
+.ly.zero{background:#fff;color:#111;border:3px solid #fff;padding:20px 32px;font-weight:700;font-size:var(--fs-body);line-height:1.3}
+.ly.zero b{color:#111}
+.win{width:60px;position:relative;border-right:0;display:flex;justify-content:center}
+.win::before{content:'';position:absolute;top:0;bottom:18px;left:50%;width:4px;margin-left:-2px;background:var(--text)}
+.win::after{content:'';position:absolute;bottom:0;left:50%;margin-left:-14px;border:14px solid transparent;border-top:22px solid var(--text);border-bottom:0}
+.win span{writing-mode:vertical-rl;font-size:var(--fs-caption);font-weight:600;background:var(--bg);align-self:center;position:relative;z-index:1;padding:10px 0}
+.big-q{font-size:44px;font-weight:700;line-height:1.3;color:var(--accent);margin:0}
+/* pills */
+.pills{display:flex;align-items:center;flex-wrap:wrap;gap:8px 14px}
+.pills i{font-style:normal;color:var(--accent);font-size:var(--fs-small)}
+.pill{font-size:var(--fs-small);font-weight:600;padding:10px 22px;border-radius:999px;background:var(--surface);border:2px solid var(--line)}
+.pill.k{background:#FEE500;color:#111;border-color:#FEE500}
+.pills.small .pill{background:var(--bg)}
+/* S8 */
+.tl{position:relative;height:620px}
+.tl::before{content:'';position:absolute;left:0;right:0;top:50%;height:4px;background:var(--line)}
+.tp{position:absolute;left:calc(var(--t)*100%);width:400px;display:flex;flex-direction:column;gap:6px;padding-left:0}
+.tp::before{content:'';position:absolute;left:0;width:22px;height:22px;border-radius:50%;background:var(--accent)}
+.tp b{font:700 56px var(--mono);color:var(--accent);line-height:1}
+.tp span{font-size:var(--fs-body);line-height:1.3}
+.tp.up{bottom:calc(50% + 40px)}.tp.up::before{bottom:-49px}
+.tp.dn{top:calc(50% + 40px)}.tp.dn::before{top:-49px}
+.tp.last{left:auto;right:0;width:auto;align-items:flex-end;text-align:right}
+.tp.last::before{left:auto;right:calc(4% * 6.2)}
+/* S9 */
+.pile{position:relative;height:590px}
+.wall{position:absolute;left:0;top:0;width:100%;max-height:none;border-radius:10px;opacity:.95}
+.pile .top{position:absolute;right:-8px;bottom:0;width:440px;outline:6px solid var(--bg)}
+.cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+/* S12 */
+.emoji{font-size:74px;line-height:1.1;margin:0;white-space:nowrap;letter-spacing:.02em}
+.say{border-left:6px solid #FEE500;padding-left:20px;font-weight:600}
+.res{color:var(--accent);font-weight:700}
+/* S13/S20 band */
+.band{margin:0;padding:14px 28px;border-radius:12px;background:#FEE500;color:#111;font-weight:700;font-size:var(--fs-body);line-height:1.3}
+.band code{background:rgba(0,0,0,.1);color:#111}
+.band.y{background:var(--surface);color:var(--text);border-left:8px solid var(--accent);border-radius:0 12px 12px 0}
+.two{display:grid;grid-template-columns:1fr;gap:8px}
+/* S16 */
+.ninety{display:flex;align-items:baseline;gap:8px;line-height:.9}
+.ninety b{font-size:170px;font-weight:800;color:var(--accent);letter-spacing:-.04em}
+.ninety span{font-size:64px;font-weight:700}
+.axis{position:relative;height:44px;border-top:4px solid var(--accent);margin-top:44px}
+.axis i{position:absolute;top:-11px;width:18px;height:18px;margin-left:-9px;border-radius:50%;background:var(--accent)}
+.axis span{position:absolute;top:12px;font:500 26px var(--mono);color:var(--sub)}
+.axis span.up{top:-48px;transform:translateX(-50%)}
+/* kakao rebuilt */
+.kakao{background:#BACADD;border-radius:18px;padding:40px 44px;display:flex;flex-direction:column;gap:30px;color:#111;position:relative}
+.b-me{align-self:flex-end;display:flex;align-items:flex-end;gap:12px;flex-direction:row-reverse;max-width:92%}
+.b-me span{background:#FEE500;border-radius:16px;padding:22px 30px;font-size:40px;line-height:1.35}
+.b-me time{font-size:var(--fs-caption);color:#333;white-space:nowrap}
+.b-me.large{flex-direction:row;max-width:100%}
+.b-me.large span{font-size:62px;font-weight:600;line-height:1.25;padding:34px 44px}
+.b-them{display:flex;gap:18px;align-items:flex-start}
+.b-them>i{flex:none;width:76px;height:76px;border-radius:26px;background:#5B6B7D;color:#fff;font-style:normal;font-weight:700;display:grid;place-items:center;font-size:32px}
+.b-them em{display:block;font-style:normal;font-size:var(--fs-small);margin-bottom:8px}
+.b-them span{display:block;background:#fff;border-radius:16px;padding:24px 32px;font-size:48px;font-weight:600;line-height:1.3}
+.b-them mark{color:#111;background:#FEE500;padding:0 6px;border-radius:4px;font-weight:800}
+.recon{margin:0;font-size:var(--fs-caption);color:#2B3440;align-self:flex-start}
+.kakao.wide{padding:44px;gap:32px}
+/* charts */
+.chart{width:100%;height:auto;max-height:none;display:block}
+.rw{display:grid;grid-template-columns:150px 1fr;gap:20px;padding:14px 22px;background:var(--surface);border-radius:12px;line-height:1.3}
+.rw b{color:var(--accent);font-size:var(--fs-body)}
+.side{display:flex;align-items:flex-end;gap:20px;margin-top:6px}
+.two-l{display:flex;flex-direction:column;gap:6px}
+.card .points{font-size:var(--fs-body)}
+.card{padding:26px 36px;gap:12px}
+.card .tag{font-size:var(--fs-small)}
+.ex{font-size:44px!important;font-weight:700;line-height:1.25;color:var(--text)!important;margin:0!important}
+.stat .num{font-size:120px}
+.imgs2{display:grid;grid-template-columns:490px 1fr;gap:16px;align-items:start}
+table.data.big{font-size:var(--fs-body)}
+table.data.big th{font-size:var(--fs-small);padding:10px 20px}
+table.data.big td{padding:15px 20px}
+tr.bad-row td{color:var(--bad);font-weight:700}
+pre.code{border:2px solid var(--line);font-size:34px;padding:26px 32px}
+pre.code .hl-line{background:rgba(255,122,122,.22);color:#fff;font-weight:700}
+/* S24 */
+.chain{display:flex;align-items:stretch;gap:8px}
+.chain>i{font-style:normal;align-self:center;color:var(--accent);font-size:36px}
+.link{flex:1;min-width:0;background:var(--surface);border-radius:14px;padding:22px 18px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:4px;font-size:var(--fs-body);font-weight:600;line-height:1.3;min-height:190px}
+.link code{font-size:28px;padding:2px 6px;white-space:nowrap}
+.link.zero{background:var(--accent);color:#111;flex:1.1}
+.link.zero b{font-size:120px;font-weight:800;line-height:.9}
+.link.zero small{font-size:40px}
+.est{display:inline-block;font-size:var(--fs-caption);font-weight:700;color:var(--accent);border:2px solid var(--accent);border-radius:8px;padding:0 8px;line-height:1.3;vertical-align:.1em}
+/* S26 */
+.sigs{display:flex;gap:14px;align-items:stretch}
+.sigs>i{font-style:normal;align-self:center;color:var(--accent);font-size:32px}
+.sig{flex:1;min-width:0;background:var(--surface);border-radius:14px;padding:22px 24px;display:flex;flex-direction:column;gap:10px;position:relative}
+.sig em{width:18px;height:18px;border-radius:50%;background:var(--accent);box-shadow:0 0 18px var(--accent)}
+.sig span{font-size:var(--fs-small);color:var(--sub)}
+.sig b{font-size:36px;line-height:1.3;font-weight:600}
+.fix{display:flex;align-items:center;gap:18px}
+.fix b{font-size:var(--fs-body);white-space:nowrap;color:var(--good)}
+.fix span{flex:1;background:var(--surface);border-left:6px solid var(--good);border-radius:0 12px 12px 0;padding:30px 24px;font-size:var(--fs-body);font-weight:600;line-height:1.25}
+/* S27 */
+[data-layout='statement'] .headline{font-size:44px;font-weight:600;color:var(--sub);max-width:none}
+[data-layout='statement'] .slide-body{flex:none;margin-top:20px}
+.three{display:flex;flex-direction:column;gap:44px}
+.three p{font-size:92px;font-weight:800;line-height:1.1;letter-spacing:-.03em}
+.three p:last-child{color:var(--accent)}
+/* S28 */
+[data-layout='closing'] .headline{font-size:var(--fs-h1)}
+[data-layout='closing']{justify-content:flex-start}
+[data-layout='closing'] .slide-body{width:100%}
+.fullw{width:100%}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.tile{display:block;color:var(--text);text-decoration:none;font-size:var(--fs-caption);font-weight:600}
+.tile img{display:block;width:100%;height:auto;max-height:none;border-radius:8px;margin-bottom:4px}
+.golink{display:grid;place-items:center;background:var(--accent);color:var(--on-accent);border-radius:12px;font-size:30px;font-weight:700;text-decoration:none;font-family:var(--mono)}
+a.shot{text-decoration:none}
+.slide-body p{margin:0}
+
+.pills.arrowed .pill+.pill::before{content:'→';color:var(--accent);position:absolute;margin-left:-44px}
+.pills.arrowed{gap:8px 34px}.pills.arrowed .pill{position:relative}
+.chips{display:flex;flex-wrap:wrap;gap:12px}
+.chip{font-size:var(--fs-body);font-weight:500;padding:6px 20px;border-radius:12px;background:var(--bg);line-height:1.3}
+td.ok{color:var(--good);font-weight:600}
+td.no{color:var(--bad);font-weight:800}
+.tile img{height:150px;object-fit:cover;object-position:top}
+.imgs2 .shot img{max-height:none}
+.perm{position:absolute;right:var(--pad-x);top:244px;width:260px;display:block;border-radius:10px}
+.points>li .sub.full{font-size:var(--fs-body);color:var(--text);font-weight:600;margin-top:10px}
+.bigline{line-height:1.25}
+.bigline b{display:block;font-size:96px;font-weight:800;color:var(--accent);letter-spacing:-.03em;line-height:1.1}
+.keys{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.keys span{background:var(--bg);border-radius:12px;padding:12px 18px;font-size:32px;font-weight:600;line-height:1.3}
+.refuse{background:#BACADD}
+.shot.chat.nudge img,.shot.chat.fillw img{width:100%}
+.grid.eqh{align-items:stretch}
+
+</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&display=swap">
+</head>
+<body>
+<main class="deck">
+
+  <section class="slide" data-layout="title" data-cover="P1" data-part="" data-n="1">
+    <header class="slide-head"><p class="eyebrow">연습 문제는 다 통과했는데, 왜 떨어졌을까?</p><h1 class="headline">AI_TOP_100 예선 탈락썰</h1></header>
+    <div class="slide-body"><img class="bg" src="assets/cover_village.jpg" alt="교동마을회관 앞에 모인 마을 사람들"><div class="scrim"></div>
+<div class="ieum"><img src="assets/ieum.jpg" alt="봇 캐릭터 이음 AI"><span>이음 AI</span></div></div>
+    <aside class="notes">2주 전 10월 31일 토요일에 카카오임팩트에서 주최한 AI TOP 100 대회에 참여해 보았는데요, 처참하게 탈락한 썰을 풀어 보겠습니다</aside>
+  </section>
+
+  <section class="slide" data-layout="split" data-cover="P2 P3 P4 P5 P6 P7" data-part="" data-n="2">
+    <header class="slide-head"><p class="eyebrow">어떤 대회인가?</p><h2 class="headline">5시간 안에 가상 마을의 상담 AI 카카오톡 채널 봇을 만드는 대회입니다</h2></header>
+    <div class="slide-body"><div class="grid" style="--l:790px;--r:1fr"><div class="col" style="gap:8px"><div class="shot web"><img src="assets/site_story.jpg" alt="대회 스토리 화면"></div><p class="caption">신청 정원 5,000명, 5시간 만에 마감</p></div><div><ul class="points tight"><li>카카오임팩트 재단 주최, 본선 100명(11/21)</li><li>작년은 정답 맞히기, 올해는 에이전트가 일하는지</li><li>10/31 10:00~15:00, 문제 1개: 2037-06-30 세계관 쇼핑몰 「교동마을 산지직송」 CS</li><li>필수: 챗봇 연결, 운영진 액션 서버 연동, 인젝션 방어</li><li>제출: App ID + 디브리프, 1회뿐, 수정·재입장 불가</li></ul></div></div>
+<div class="shot" style="width:100%"><img src="assets/steps.png" alt="예선 진행 순서 7단계: 가이드, 스토리, 관계자 대화, 제작, 제출, 심사, 결과 발표"></div></div>
+    <p class="source">출처: 대회 사이트, 예선 진행 기록, 운영 TF 예선 후기(2026-11-02)</p>
+    <aside class="notes">이번 대회는 AI 역량을 다루는 경진대회였습니다. 5,000명이 지원했고, 그중 100명을 선발하는 대회였습니다. 대회에는 세계관이 있는데요. 날짜는 2037년 6월 30일, 무대는 제주의 교동마을과 갯마을입니다. 쇼핑몰 이름은 「교동마을 산지직송」이고, 혼자 상담을 맡던 청년회 이민준을 도울 고객 상담 에이전트를 만드는 문제였습니다. 제한 시간은 5시간이었으며, 결과물은 AI 카카오톡 채널 봇과, 에이전트의 강점과 설계, 구현 과정을 적는 디브리프였습니다. 액션 서버는 운영진이 주는 API로, 주문과 배송, 결제를 조회하고 접수하는 곳인데 나중에 이 서버가 중요해집니다.</aside>
+  </section>
+
+  <section class="slide" data-layout="split" data-cover="P9 P10" data-part="" data-n="3">
+    <header class="slide-head"><p class="eyebrow">어떤 대회인가?</p><h2 class="headline">자료도 연락처도 가상 인물 10명을 인터뷰해야 열렸습니다</h2></header>
+    <div class="slide-body"><div class="grid" style="--l:620px;--r:1fr"><div class="shot" style="background:#F1F7FE"><img src="assets/guide_chat.png" alt="대회 안내 페이지의 이민준 대화 예시"></div><div class="col" style="gap:36px"><ul class="points "><li>처음엔 이민준 1명만 공개, 관계자는 총 10명</li><li>나머지는 인터뷰 중 연락처를 받아야 대화 가능</li><li>카카오톡 1:1, 메시지 200자 이하, 한 명당 최대 100회</li><li><code>./status</code> 로 발굴률 확인</li><li>즉, 대화를 통해 발굴률을 높이고 관계자도 찾아야함</li></ul><div class="shot" style="width:760px"><img src="assets/status_line.png" alt="./status 예시: [SYSTEM] 질문 수 12/100, 지식 발굴률 32%"></div></div></div></div>
+    <p class="source">출처: 문제 안내 페이지, 마을 관계자 대화 페이지</p>
+    <aside class="notes">데이터와 추가 정보, 새로운 인물의 연락처까지, 세계관의 모든 정보는 가상 인물과 카카오톡으로 대화해 문서 링크와 사실을 얻어 내야 했습니다. 대화창에 ./status를 치면 그 인물에게서 지식을 몇 퍼센트 캐냈는지는 나오지만, 어떤 지식을 찾았는지는 알려 주지 않습니다. 이 지식 발굴률은 심사 기준 다섯 가지 중 하나에 들어갔습니다.</aside>
+
+  </section>
+
+  <section class="slide" data-layout="diagram" data-cover="P11 P12 P15 P13 P14" data-part="" data-n="4">
+    <header class="slide-head"><p class="eyebrow">어떤 대회인가?</p><h2 class="headline">AI 고객이 봇에게 직접 문의해 채점하고, 올바른 답변도 필요합니다</h2></header>
+    <div class="slide-body"><div class="grid" style="--l:960px;--r:1fr"><div class="col"><div class="shot web" style=""><img src="assets/criteria.png" alt="심사 기준 5항목 화면"><svg class="over" viewBox="0 0 1830 880" aria-hidden="true"><path d="M 215 684 C 140 684 140 208 212 208" fill="none" stroke="#E8590C" stroke-width="7"/><path d="M 210 194 L 236 208 L 210 222 Z" fill="#E8590C"/><path d="M 215 684 C 140 684 140 367 212 367" fill="none" stroke="#E8590C" stroke-width="7"/><path d="M 210 353 L 236 367 L 210 381 Z" fill="#E8590C"/><path d="M 215 684 C 140 684 140 525 212 525" fill="none" stroke="#E8590C" stroke-width="7"/><path d="M 210 511 L 236 525 L 210 539 Z" fill="#E8590C"/></svg></div></div><div><ul class="points tight"><li>30개 안팎 시나리오를 카카오톡으로 문의<span class="sub">예시 TC와 다른 형식도 옴: 문서·이미지·.zip·음성 파일 ("응우옌 티…" 뭐라던데...?)</span></li><li>p95·말풍선·글자 수 점수는 정확도로 가중</li><li>60초 넘게 답이 없으면 그 케이스 종료</li><li>500자가 넘는 답은 평가 제외</li><li>심사 기간 10/31 16:00~11/1 24:00: 변경 금지</li></ul></div></div>
+<p class="caption" style="font-size:var(--fs-small);color:var(--sub)">p95는 응답 시간을 빠른 순으로 줄 세웠을 때 95% 지점의 값입니다. 쉽게 말해 "답변 100개 중 95개는 이 시간 안에 왔다"는 뜻입니다.<br>평균 대신 p95를 보는 까닭은 평균이 느린 답변을 가려 버리기 때문입니다.</p></div>
+    <p class="source">출처: 문제 안내 페이지, 운영 TF 예선 후기(2026-11-02), 심사 로그</p>
+    <aside class="notes">심사 기준은 마을 인물과의 인터뷰로 획득한 지식 수, 에이전트 응답 속도, 평균 말풍선 수, 말풍선당 글자 수, 응답의 정확도였습니다. 대회 심사 이후 서버 로그를 분석해 보니, 대회 가이드의 예시 TC와 달리 이미지와 zip 파일, 심지어 음성 파일까지 링크로 와 있었습니다. 고객 이름도 "응우옌 티…"라고 되어 있었습니다. 많이 당황했습니다.</aside>
+  </section>
+
+  <section class="slide" data-layout="split" data-cover="P2" data-part="" data-n="5">
+    <header class="slide-head"><p class="eyebrow">어떤 대회인가?</p><h2 class="headline">출제진은 한 문제로 현장 조사부터 엔지니어링까지 보려 했습니다</h2></header>
+    <div class="slide-body"><div class="grid eqh" style="grid-template-columns:repeat(3,1fr)"><div class="card"><span class="tag">AX·FDE</span><h3>현장 조사</h3><p class="fs">여러 관계자에게 흩어진 지식을 직접 묻고 들으며 모은다</p></div><div class="card"><span class="tag">제품</span><h3>제품 판단</h3><p class="fs">어떤 상담 에이전트를 만들지 정하고 5시간 안에 동작하게 완성한다</p></div><div class="card"><span class="tag">AI·엔지니어링</span><h3>일의 설계</h3><p class="fs">수집·실행·검증을 나누고 자동화하며 시간과 비용을 배분한다</p></div></div>
+<ul class="points tight"><li>관계자마다 AI 에이전트를 두고 카카오톡 채널로 대화</li><li>제출한 상담 에이전트는 심사 에이전트가 직접 대화하며 평가</li></ul></div>
+    <p class="source">출처: 운영 TF 예선 후기(2026-11-02)</p>
+    <aside class="notes">대회가 끝나고 운영 TF가 올린 후기에 출제 의도가 나옵니다. 간단해 보이는 문제 하나에 제품 빌딩과 AX, FDE, AI 기술, 엔지니어링을 함께 담으려 했다는 내용입니다. 사람을 만나 업무 지식을 끌어내는 일을 AX와 FDE의 출발점으로 봤고, 5시간 안에 동작하는 결과물을 내는 데서 제품 판단을 봤고, AI를 어디에 쓰고 시간과 비용을 어떻게 나누는지에서 기술과 엔지니어링의 차이를 봤습니다.</aside>
+  </section>
+
+  <section class="slide" data-layout="split" data-cover="P2" data-part="" data-n="6">
+    <header class="slide-head"><p class="eyebrow">대회 전 준비</p><h2 class="headline">대회 전에 온 메일: 챗봇과 서버는 직접 준비해 오라고 했습니다</h2></header>
+    <div class="slide-body"><div class="grid" style="--l:820px;--r:1fr"><div class="shot"><img src="assets/mail_prep.png" alt="운영 사무국 메일의 카카오톡 봇 API와 구동 서버 안내 부분"></div><ul class="points tight"><li>준비물: 개인 PC, 스마트폰, 평소 쓰는 AI 도구(도구 지원금 없음)</li><li>챗봇: 카카오톡 봇 API로 채널 챗봇을 미리 제작 권장, 채널은 검색되지 않게 설정</li><li>서버: 주최 측 지원 없음, 직접 구축. 11월 1일 자정까지 끊김 없이 응답</li><li>책임: 서버 다운·네트워크 오류로 생긴 심사 불이익은 참가자 몫</li></ul></div></div>
+    <p class="source">출처: 운영 사무국 안내 메일 「예선 전 필수 확인사항」</p>
+    <aside class="notes">대회 전에 운영 사무국에서 온 메일입니다. 문제는 당일에 공개되지만 챗봇을 올릴 서버와 카카오톡 채널 봇은 참가자가 직접 준비해야 했습니다. 서버가 죽거나 네트워크가 불안해 심사에 불이익이 생겨도 참가자 책임이였습니다. 서버는 AWS Lightsail에 Python FastAPI로 올렸고, 모델은 OpenAI gpt-6.1-sol을 썼습니다. Python은 카카오 공식 예제도 Python FastAPI 여서 맞춰 사용했습니다. </aside>
+  </section>
+
+  <section class="slide" data-layout="diagram" data-cover="P16 P17 P116" data-part="" data-n="7">
+    <header class="slide-head"><p class="eyebrow">대회 전 준비</p><h2 class="headline">당일엔 자료와 지침만 갈아 끼우도록 프롬프트를 층으로 나눴습니다</h2></header>
+    <div class="slide-body"><div class="grid" style="--l:1040px;--r:1fr"><div class="stack-wrap"><div class="stack"><div class="swap-tag">프롬프트 아키텍처: 1~5층과 지식은 당일 교체</div><div class="ly-row"><div class="lys"><div class="ly"><b>5</b><span>예시<small style="font-size:var(--fs-small);color:var(--sub);margin-left:20px">이렇게 답하라는 모범 대화</small></span></div><div class="ly"><b>4</b><span>대화<small style="font-size:var(--fs-small);color:var(--sub);margin-left:20px">답의 길이·말투·되묻는 법</small></span></div><div class="ly"><b>3</b><span>도구<small style="font-size:var(--fs-small);color:var(--sub);margin-left:20px">주문·배송을 조회·접수하는 법</small></span></div><div class="ly"><b>2</b><span>미션<small style="font-size:var(--fs-small);color:var(--sub);margin-left:20px">문의를 규정대로 처리·이관</small></span></div><div class="ly"><b>1</b><span>도메인<small style="font-size:var(--fs-small);color:var(--sub);margin-left:20px">쇼핑몰 배경과 상담원 역할</small></span></div></div><div class="know"><div style="text-align:center"><b>지식</b><br><small style="font-size:var(--fs-small);color:var(--sub)">규정·상품 자료</small></div></div></div><div class="ly zero"><span>0층 기본 원칙(정확·정직·안전·형식): 고정</span></div></div><div class="win"><span>부딪히면 아래층이 우선</span></div></div><div class="col" style="justify-content:center;gap:40px"><p>대회 시작 전 계획: 5시간은 자료 조사에 쓴다, 코드는 당일에 거의 손대지 않는다</p><p class="big-q">지침끼리 부딪히면 정확·정직·안전 같은 기본 원칙을 먼저 따르게 했습니다. 그래서 대회 당일에 지침을 급히 고쳐도 원칙은 깨지지 않습니다.</p></div></div></div>
+    <p class="source">출처: 기술 설계서, 회고</p>
+    <aside class="notes">이 그림이 봇의 프롬프트 아키텍처입니다. 문제를 미리 모르니 튼튼하고 변동 없을 바닥 프롬프트랑과 대회 당일 유동성을 줄 프롬프트 칸으로 나눴습니다. 처음 계획은 2층, 3층, 5층과 지식만 바꾸는 것이었는데 실제로는 대회중 1층과 4층도 수정이 발생하였습니다.</aside>
+  </section>
+
+  <section class="slide" data-layout="flow" data-cover="P18 P19 P20 P8 P21 P22 P23" data-part="" data-n="8">
+    <header class="slide-head"><p class="eyebrow">대회 전 준비</p><h2 class="headline">사람과 에이전트 팀이 나눠, 사전에 실제 카카오톡 대화까지 끝냈습니다</h2></header>
+    <div class="slide-body"><div class="grid" style="--l:1150px;--r:1fr"><div class="col" style="gap:20px"><div class="pills"><span class="pill k">카카오톡 메시지</span> <i>→</i> <span class="pill">내 서버</span> <i>→</i> <span class="pill">모델</span> <i>→</i> <span class="pill">답장</span></div>
+<div class="grid3"><div class="shot" style=""><img src="assets/botinfo.png" alt="봇 기본 정보 화면"></div><div class="shot" style=""><img src="assets/lightsail.png" alt="Lightsail 요금표"></div></div><ul class="points tight"><li>민우: 계정·결제·콘솔 설정·키 입력</li><li>Claude Code 7인 팀 구성: 설계·구현·시험·문서</li><li>10/26: Lightsail·고정 IP·HTTPS·카카오 봇 연결 → 실제 대화 성공</li><li>카카오 봇 조건: 1초 안에 수신 확인, 5분 안에 별도 API로 답장, 호출 허용 IP 등록</li></ul></div><div class="col"><div class="shot chat" style=""><img src="assets/first_chat.png" alt="실제 카카오톡 첫 대화"></div><p class="caption">대회 준비중, 실제 카카오톡 첫 대화</p></div></div></div>
+    <p class="source">출처: 예선 진행 기록, 기술 설계서</p>
+    <aside class="notes">사전에 이렇게 준비해 보았다 내용입니다.</aside>
+  </section>
+
+<section class="slide" data-layout="flow" data-cover="P30 P32 P31" data-part="" data-n="9">
+    <div class="rail" style="--t:0.96"><u></u><em></em></div><header class="slide-head"><p class="eyebrow">대회 진행</p><h2 class="headline">10:00에 열려 14:48에 제출한 5시간의 지도입니다</h2></header>
+    <div class="slide-body"><div class="grid" style="--l:640px;--r:1fr"><div class="shot web"><img src="assets/countdown.png" alt="대회 시작까지 00:41:49 대기 화면"></div><div class="tl"><div class="tp up" style="--t:0;width:262px"><b>10:00</b><span>시작, 10:07까지 에이전트가 대회 진행 웹 페이지를 스캔해 저장</span></div><div class="tp dn" style="--t:.023"><b>10:07</b><span>첫 질문</span></div><div class="tp up" style="--t:.28"><b>11:24</b><span>Claude가 자동으로 카카오톡 조작 시작</span></div><div class="tp dn" style="--t:.553"><b>12:46</b><span>10번째 관계자 연결</span></div><div class="tp up last"><b>14:48</b><span>제출</span></div></div></div></div>
+    <p class="source">출처: 예선 진행 기록, 대화 타임라인</p>
+    <aside class="notes">대회 시작전에 9시 부터 대회 대기 페이지가 오픈되었고, 공정 경쟁 서약, 응시 환경 인증 등이 있었습니다.
+      그리고 10시에 본 페이지가 오픈되었고 저는 페이지가 오픈되자 마자 에이전트를 통해 대회 진행 웹 페이지 전체를 스캔해 저장하게 했습니다.</aside>
+  </section>
+
+  <section class="slide" data-layout="split" data-cover="P33 P34 P35" data-part="" data-n="10">
+    <div class="rail" style="--t:0.023"><u></u><em></em></div><header class="slide-head"><p class="eyebrow">대회 진행 · 10:07</p><h2 class="headline">처음 75분은 사람이 카카오톡을 캡처해 Claude에게 이미지로 넘겼습니다</h2></header>
+    <div class="slide-body"><div class="grid" style="--l:760px;--r:1fr"><div><ul class="points tight"><li>10:07~11:22: 질문은 손으로, 답은 캡처해 대화로 전달</li><li>이미지 약 110장, 질문당 손 작업 대략 1~2분</li></ul><p class="fs" style="margin:22px 0 12px;font-weight:700;color:var(--accent)">왜 손으로 시작했나</p><ul class="points tight smallish"><li>과부하를 부르는 자동화 대량 요청은 실격</li><li>질문 횟수·입력 한도·접근 제한 우회와 해킹 시도도 실격</li><li>규정: "모든 과정은 참가자 본인이 직접 수행"</li></ul></div><div class="pile"><img class="wall" src="assets/collage.jpg" alt="가로로 긴 대화 캡처 10장을 쌓은 모습"><div class="shot chat top"><img src="assets/minjun_1041.png" alt="10:41 이민준의 답 캡처"></div></div></div></div>
+    <p class="source">출처: 대회 규정, 마을 관계자 대화 페이지, 대화 타임라인, 자동화 조사</p>
+    <aside class="notes">대회가 시작되면 이민준이라는 가상 인물의 연락처를 대회 웹 페이지에서 받을 수 있는데요.
+      관계자는 총 10명인데, 대회에서 직접 알려 주는 연락처는 이것 하나뿐이고 나머지 9명은 대화를 통해 찾아가야 했습니다.
+      
+      처음에는 제가 직접 대화창에 질문을 입력하고, 스크린샷을 찍어 Claude에게 전달하며 함께 이야기했는데요. 이렇게 시작한 이유는 규정에서 접근 제한 우회, 서비스 과부하를 유발하는 자동화 대량 요청 등을 실격 사유로 들고 있었기 때문입니다.</aside>
+  </section>
+
+  <section class="slide" data-layout="split" data-cover="P36 P37 P38 P39" data-part="" data-n="11">
+    <div class="rail" style="--t:0.137"><u></u><em></em></div><header class="slide-head"><p class="eyebrow">대회 진행 · 10:07~10:41</p><h2 class="headline">한꺼번에 물으면 안 알려 주고, 한 상황을 콕 집어 물어야 연락처를 줬습니다</h2></header>
+    <div class="slide-body"><div class="grid" style="--l:590px;--r:1fr"><div class="col" style="gap:20px;justify-content:space-between"><ul class="points tight"><li>이민준의 첫 답: 한꺼번에 알려 주면 놓치기 쉬우니, 고객이 실제로 하는 말로 물어봐 달라</li><li>10:13~10:33 고길동·홍이장·구방만·박민아·홍보라·박수복·김청년까지 8명 연결</li><li>고길동도 같은 답: 한 가지만 말해 주면 그 일에 맞는 사람만 골라서 알려 주겠다</li></ul><div class="cards3"><div class="shot" style=""><img src="assets/card_gogildong.png" alt="고길동 연락처 카드"></div><div class="shot" style=""><img src="assets/card_parksubok.png" alt="박수복 연락처 카드"></div><div class="shot" style=""><img src="assets/card_kimcheongnyeon.png" alt="김청년 연락처 카드"></div></div></div><div class="grid2eq"><div class="shot chat" style=""><img src="assets/iv_first_underline.png" alt="10:07 첫 질문과 이민준의 답. 좁혀서 말해 달라는 문장과 고객이 실제로 하는 말에 노란 밑줄"></div><div class="shot chat" style=""><img src="assets/iv_gogildong.png" alt="10:41 고길동의 답"></div></div></div></div>
+    <p class="source">출처: 인터뷰 캡처(10:07, 10:41), 예선 진행 기록</p>
+    <aside class="notes">제 첫 질문은 규정과 자료를 다 보여 달라, 아는 사람 연락처도 전부 다 넘겨 달라, 아 몰라 그냥 다줘 해줘 해줘 였는데요. 역시나 이렇게 쉽게 만들지 않으셨는지 인물들은 그렇게 물으면 답하지 않습니다. 고객이 실제로 하는 말과 같이 질문해야 그에 맞는 기준과 사람을 짚어 주었습니다. 이렇게 관계자들이 링크로 건넨 규정집, 택배사 계약서, 콜드체인 온도 로그, 라이브 스크립트 등등등 문서를 모아 다음 인물에 대한 단서를  추리하고, 세계관에 대한 전반적인 지식을 높여가야 했습니다.</aside>
+  </section>
+
+  <section class="slide" data-layout="split" data-cover="P40" data-part="" data-n="12">
+    <div class="rail" style="--t:0.113"><u></u><em></em></div><header class="slide-head"><p class="eyebrow">대회 진행 · 10:34</p><h2 class="headline">10:34, 연습용 시험 번호를 우리가 정한 형식으로 보내 보고 안심했습니다</h2></header>
+    <div class="slide-body"><div class="grid" style="--l:1fr;--r:900px"><div class="col" style="justify-content:center"><ul class="points "><li>액션 서버: 대회가 주는 쇼핑몰 서버. 봇이 여기서 주문·배송·결제를 조회하고 접수</li><li>호출하려면 어떤 문제인지 알려 주는 번호(TC ID)가 필요</li><li>심사 때 번호를 어떤 형식으로 주는지는 공개되지 않음</li><li>공개 예시 번호 L-03을 "TC ID: L-03"으로 직접 보내 보니 서버가 읽어 냄 → 안심</li></ul></div><div class="shot chat" style=""><img src="assets/tc_test.png" alt="10:34 TC ID: L-03 메시지와 봇 답"><i class="ring" style="left:23.8%;top:7.2%;width:20.4%;height:7.8%"></i></div></div></div>
+    <p class="source">출처: 예선 진행 기록, 시험 번호 실패 분석</p>
+    <aside class="notes">대회 진행 웹 페이지에는 액션서버 API 명세서와 예시 TC가 15개 항목이 있었는데요.
+      해당 예시에는 "대화에서 전달받은 TC ID"를 넣으라고 되어 있었고 액션서버에 그림과 같이 TC ID를 추가해 보니 성공적으로 호출되었습니다. 해서 전송에 성공한 ID를 포맷으로 작업을 진행했었습니다.</aside>
+  </section>
+
+  <section class="slide" data-layout="quote" data-cover="P41 P42 P43" data-part="" data-n="13">
+    <div class="rail" style="--t:0.213"><u></u><em></em></div><header class="slide-head"><p class="eyebrow">대회 진행 · 11:04</p><h2 class="headline">11:04, 시스템이 손으로 타이핑 중이냐고 물었습니다</h2></header>
+    <div class="slide-body"><div class="grid" style="--l:1080px;--r:1fr"><div class="col" style="gap:24px"><div class="shot chat nudge"><img src="assets/nudge.png" alt="[SYSTEM] 잘하고 있어? 에이... 설마 아직도 직접 손으로 타이핑하면서 인터뷰 중인 건 아니겠지?"></div><p class="emoji">🤖👀📸 → 🤔 → 🖱️⌨️ → 🔁 → 🎉</p><div class="shot chat fillw" style="width:860px"><img src="assets/status39.png" alt="[SYSTEM] 질문수 23/100, 지식발굴률 39%"></div></div><div class="col" style="gap:32px;justify-content:center"><p>지식발굴률 39%일 때 갑자기 온 [SYSTEM] MESSAGE</p><p class="say">11:08 민우 반응: "후.. 진짜 뭔 자동화 방법 없나?"</p><p class="say">11:09 민우 해석: "자동화 하라는 거 같은데?"</p></div></div></div>
+    <p class="source">출처: 이민준 대화창 캡처(11:04), 대화 타임라인</p>
+    <aside class="notes">한참 손으로 노가다 하던 중에, 대회 시스템이 이민준 대화창으로 보낸 메시지입니다.
+      누구 놀리는것도 아니도 안그래도 6명, 7명 대화창이 늘어나다 보니 정신 없는데 확 열받더군요...
+      그래서 이건 손으로 하는게 아니다! 라는 생각으로 바로 자동화를 진행했습니다.</aside>
+  </section>
+
+  <section class="slide" data-layout="flow" data-cover="P44 P45 P46 P47 P48 P49" data-part="" data-n="14">
+    <div class="rail" style="--t:0.28"><u></u><em></em></div><header class="slide-head"><p class="eyebrow">대회 진행 · 11:24</p><h2 class="headline">API가 없어, 손쉬운 사용 권한으로 Claude가 카톡을 조작했습니다</h2></header>
+    <div class="slide-body"><div class="grid" style="--l:880px;--r:1fr;flex:1"><div><ul class="points tight"><li>채널 대화용 공식 API 없음</li><li>컴퓨터 유즈는 질문당 30~60초 추가·오전송 위험 → AppleScript로 11:24 전환</li><li>규정의 자동화 대량 요청 금지 → 인물당 한 질문·97회 상한<span class="sub full">창 여러 개 동시로 3시간 약 680건, 10분 최대 약 60건</span></li></ul></div><div class="col" style="gap:16px"><div class="pills small" style="flex-wrap:nowrap;gap:8px"><span class="pill">입력</span><i>→</i><span class="pill">전송</span><i>→</i><span class="pill">답 대기</span><i>→</i><span class="pill">저장</span><i>→</i><span class="pill">다음</span><i>↺</i></div><div class="shot"><img src="assets/rule_ban.png" alt="규정 금지 행위와 실격 기준: 서비스 과부하를 유발하는 자동화 대량 요청"></div><div class="shot"><img src="assets/rule_art2.png" alt="규정 제2조: 모든 과정은 참가자 본인이 직접 수행해야 하며,"></div></div></div><img class="perm" src="assets/perm_claude.png" alt="손쉬운 사용 권한 화면의 Claude 줄"></div>
+    <p class="source">출처: 자동화 조사, 대회 규정 제2조, 대화 타임라인, 도구 기록(전송 669 + 복구 후 전송 14). 규정 캡처는 재현본에서 해당 줄을 이어 붙임</p>
+    <aside class="notes">처음에는 사실 API를 사용하려고 했는데요, 그게 가장 빠르니깐요, 그런데 카톡에서 공식적으로 지원하는 API가 없어서, 차선으로 Mac에 기본으로 들어 있는, 앱을 대신 조작해 주는 스크립트 언어인 AppleScript를 사용하게 되었습니다.</aside>
+  </section>
+
+<section class="slide" data-layout="split" data-cover="P56 P57 P58 P59 P60 P61" data-part="" data-n="15">
+    <div class="rail" style="--t:0.467"><u></u><em></em></div><header class="slide-head"><p class="eyebrow">대회 진행 · 12:14~12:20</p><h2 class="headline">12:20, 인터뷰가 막혀 맥락을 모르는 에이전트에게 원문 검토를 맡겼습니다</h2></header>
+    <div class="slide-body" style="gap:0"><div style="display:grid;grid-template-columns:560px 64px 460px 64px 1fr;align-items:stretch;min-height:470px"><div class="card" style="padding:28px 32px;gap:14px;justify-content:center"><span style="font-size:var(--fs-small);font-weight:700;color:var(--bad)">막힘</span><div style="display:flex;gap:9px"><i style="width:30px;height:30px;border-radius:50%;background:var(--accent);display:block"></i><i style="width:30px;height:30px;border-radius:50%;background:var(--accent);display:block"></i><i style="width:30px;height:30px;border-radius:50%;background:var(--accent);display:block"></i><i style="width:30px;height:30px;border-radius:50%;background:var(--accent);display:block"></i><i style="width:30px;height:30px;border-radius:50%;background:var(--accent);display:block"></i><i style="width:30px;height:30px;border-radius:50%;background:var(--accent);display:block"></i><i style="width:30px;height:30px;border-radius:50%;background:var(--accent);display:block"></i><i style="width:30px;height:30px;border-radius:50%;background:var(--accent);display:block"></i><i style="width:30px;height:30px;border-radius:50%;background:var(--accent);display:block"></i><i style="width:30px;height:30px;border-radius:50%;border:3px dashed var(--bad);box-sizing:border-box;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:800;line-height:1;font-style:normal;color:var(--bad)">?</i></div><p style="margin:0;font-size:var(--fs-body);font-weight:700;color:var(--text)">9명 연결, 10번째를 못 찾음</p><p style="margin:6px 0 0;font-size:88px;line-height:1;font-weight:800;color:var(--accent)">약 55%</p><p style="margin:0;font-size:var(--fs-small);color:var(--text);line-height:1.4">9명 평균 발굴률(45~63%)<br><b>물어도 잘 안 오름</b></p></div><div style="display:grid;place-items:center;font-size:56px;font-weight:700;color:var(--sub)">→</div><div class="card" style="padding:28px 28px;gap:14px;justify-content:center"><span style="font-size:var(--fs-small);font-weight:700;color:var(--sub)">12:20 검토</span><p style="margin:0;font-size:48px;font-weight:700;line-height:1.3;color:var(--text)">인터뷰 원문을 처음부터 읽음</p><p style="margin:0;font-size:var(--fs-small);color:var(--sub)">자문만, 메시지는 안 보냄</p></div><div style="display:grid;place-items:center;font-size:56px;font-weight:700;color:var(--sub)">→</div><div class="band" style="padding:28px 36px;display:flex;flex-direction:column;gap:12px;justify-content:center"><span style="font-size:var(--fs-small);font-weight:700">진단</span><span style="font-size:52px;font-weight:800;line-height:1.3">규정 조항 번호 대신 "그날 무엇을 하셨나"를 묻기</span></div></div></div>
+    <p class="source">출처: 새 눈 자문 문서(12:20 기준 원문 검토), 대화 타임라인. 평균은 표의 값으로 계산</p>
+    <aside class="notes">벌써 대회가 시작된지 2시간이 지났습니다. 하지만 발굴률은 안 오르고, 총 10명인 인물중 9명은 찾았지만, 1명은 계속 못찾고 있는 상황이였습니다. 거의 1시간동안 신규 인원발굴만 하고 있는데도 마지막 한명은 찾지 못하던 상황이였는데요. 이때 올해 이프카카오에서 멜론에서 AI를 사용해서 frontEnd를 마이그레이션 하셨던 분의 발표가 생각나서 그분 처럼 현재 맥락을 모르는 에이전트에게 따로 검토를 맡기고, 검토 결과를 반영하여 질문 방식을 개선했습니다.</aside>
+  </section>
+
+  <section class="slide" data-layout="split" data-cover="P62 P63 P64 P65 P70 P66" data-part="" data-n="16">
+    <div class="rail" style="--t:0.533"><u></u><em></em></div><header class="slide-head"><p class="eyebrow">대회 진행 · 12:20~12:42</p><h2 class="headline">연락처 받는 법을 알고 다시 도전했지만, 10번째는 또 막혔습니다</h2></header>
+    <div class="slide-body" style="gap:0"><div style="display:grid;grid-template-columns:680px 64px 1fr;align-items:stretch"><div class="card is-key" style="padding:30px 34px;gap:26px;justify-content:center"><span style="font-size:var(--fs-small);font-weight:700;color:var(--accent)">12:20 새로 알게 된 연락처 받는 법</span><div style="display:flex;align-items:center;gap:18px"><span style="display:inline-grid;place-items:center;flex:none;width:52px;height:52px;border-radius:50%;background:var(--accent);color:#111;font-size:30px;font-weight:800">1</span><span style="font-size:38px;font-weight:700;line-height:1.25;color:var(--text)">한 사람·한 상황만 묻기</span></div><div style="display:flex;align-items:center;gap:18px"><span style="display:inline-grid;place-items:center;flex:none;width:52px;height:52px;border-radius:50%;background:var(--accent);color:#111;font-size:30px;font-weight:800">2</span><span style="font-size:38px;font-weight:700;line-height:1.25;color:var(--text)">상대가 먼저 말한 사람을 요청</span></div><div style="display:flex;align-items:center;gap:18px"><span style="display:inline-grid;place-items:center;flex:none;width:52px;height:52px;border-radius:50%;background:var(--accent);color:#111;font-size:30px;font-weight:800">3</span><span style="font-size:38px;font-weight:700;line-height:1.25;color:var(--text)">상대가 내건 조건을 실제로 해내기</span></div></div><div style="display:grid;place-items:center;font-size:56px;font-weight:700;color:var(--sub)">→</div><div class="col" style="gap:14px"><p style="margin:0;font-size:var(--fs-small);font-weight:700;color:var(--bad)">12:40 10번째 인물을 다시 물었지만</p><div class="card" style="padding:20px 28px;gap:6px"><span style="font-size:var(--fs-small);font-weight:700;color:var(--sub)">고길동</span><span style="font-size:36px;font-weight:700;line-height:1.3;color:var(--text)">"라이브 안내 정정 건은 홍보 담당 홍보라에게"</span></div><div class="card" style="padding:20px 28px;gap:6px"><span style="font-size:var(--fs-small);font-weight:700;color:var(--sub)">홍보라</span><span style="font-size:36px;font-weight:700;line-height:1.3;color:var(--text)">"연결이나 전달을 약속드릴 수 없어요"</span></div><div class="band" style="padding:20px 28px;font-size:36px;font-weight:800;line-height:1.3">12:42 재검증: 수집 자료 어디에도 10번째 주소 없음,<br>포기까지 검토</div></div></div></div>
+    <p class="source">출처: 새 눈 자문 문서, 인터뷰 기록(12:40), 마지막 1명 검증 문서</p>
+    <aside class="notes">개선된 질문 방식에 따라 마지막 인물을 찾으려고 계속 도전했는데요, 지식발굴률은 수직상승했으나, 마지막 인물은 여전히 찾지 못하는 상황 지속 되었습니다.</aside>
+  </section>
+
+  <section class="slide" data-layout="split" data-cover="P67 P68 P69" data-part="" data-n="17">
+    <div class="rail" style="--t:0.553"><u></u><em></em></div><header class="slide-head"><p class="eyebrow">대회 진행 · 12:36~12:46</p><h2 class="headline">조직관계도의 소개 조항을 보고 홍이장에게 물으니 열렸습니다</h2></header>
+    <div class="slide-body" style="gap:0"><div style="display:grid;grid-template-columns:1fr 48px 1fr 48px 1fr;margin-bottom:22px"><div style="font-size:34px;font-weight:700;line-height:1.3;color:var(--text)"><span style="display:block;font-size:var(--fs-small);font-weight:700;color:var(--accent);margin-bottom:6px">12:36</span>고길동에게 "누가 무슨 일을 맡는지 담당자를 정리한 자료"를 물어 받음</div><div style="display:grid;place-items:center;font-size:44px;font-weight:700;color:var(--sub)">→</div><div style="font-size:34px;font-weight:700;line-height:1.3;color:var(--text)"><span style="display:block;font-size:var(--fs-small);font-weight:700;color:var(--accent);margin-bottom:6px">12:45</span>자료에서 소개 조항 발견</div><div style="display:grid;place-items:center;font-size:44px;font-weight:700;color:var(--sub)">→</div><div style="font-size:34px;font-weight:700;line-height:1.3;color:var(--text)"><span style="display:block;font-size:var(--fs-small);font-weight:700;color:var(--accent);margin-bottom:6px">12:46</span>홍보 목적으로 홍이장에게 질문</div></div><div class="grid" style="--l:1000px;--r:1fr;align-items:center"><div class="col" style="gap:10px"><p style="margin:0;font-size:var(--fs-small);font-weight:700;color:var(--sub)">「조직관계도.pdf 4p」</p><div class="shot"><img src="assets/org_intro.png" alt="조직관계도 8절 소개 절차 표. 갯마을 대표가 인플루언서를 소개하는 조건은 홍보 목적이 분명할 때"></div></div><div class="kakao" style="zoom:.62"><div class="b-me"><span>…홍보걸 씨께 홍보 진행 방식을 직접 듣고 싶어요.<br>이장님이 가리켜 주실 수 있는 연락처가 있을까요?</span><time>12:46</time></div><div class="b-them"><i>홍</i><div><em>홍이장</em><span>홍보걸 연락처는 제가 알고 있어요. <mark>방학마다 찾아오는 우리 손녀예요.</mark></span></div></div><p class="recon">재구성</p></div></div></div>
+    <p class="source">출처: 조직 관계도 8절(강조 표시는 추가), 인터뷰 기록(12:36, 12:46), 대화 타임라인</p>
+    <aside class="notes">진짜 이시간 부터 너무 답답했는데요, 질문 방식은 계속 개선하고, 다양한 시도로 질문해도 답이 안나와서, 이때는 저도 적극 개입하기 시작했습니다. 질문은 질문대로 계속 던지고, 저는 혹시 모를 함정 또는 힌트를 찾기 위해, 대회 안내 페이지를 전부 훑어보기 시작했습니다. 혹시 사람 눈에 안보이는 흰색이나 투명색으로 숨겨두었을까봐 html 로 페이지 내려 받아서 까보기도 하고 했었습니다. 그러던중 조직관계도.pdf에서 마지막 인물을 소개 받는 방법에 대해 작성된걸 발견하고 드디어 마지막 인물을 발견할 수 있었습니다.
+
+      진짜 끝까지 말안해주던 이장님 손녀라더라고요 열받게</aside>
+  </section>
+
+<section class="slide" data-layout="compare" data-cover="P81 P82 P83 P84 P85" data-part="" data-n="18">
+    <div class="rail" style="--t:0.84"><u></u><em></em></div><header class="slide-head"><p class="eyebrow">대회 진행 · 14:12</p><h2 class="headline">2차 질문 개선: 막판에 "하루 일을 순서대로" 물으니 발굴률이 다시 올랐습니다</h2></header>
+    <div class="slide-body" style="gap:24px"><div style="display:grid;grid-template-columns:1fr 250px 1fr;gap:20px;align-items:stretch;flex:1;min-height:0"><div class="card is-bad" style="display:flex;flex-direction:column;gap:18px"><span class="tag">고치기 전</span><p class="ex" style="margin:0;font-size:34px;line-height:1.35">"05-09에 차액 3,000원을 돌려준 상담원이 누구였는지 기억나세요?"</p><p style="margin:auto 0 0;font-size:30px;font-weight:700;line-height:1.3;color:var(--text)"><span style="display:block;font-size:84px;line-height:1.1;color:var(--sub)"><small style="display:block;font-size:30px;line-height:1.3">발굴률</small>+4%</span>질문 42개 중 오른 질문 2개</p></div><div style="display:flex;flex-direction:column;justify-content:center;align-items:center;gap:12px;text-align:center"><span style="font-size:var(--fs-small);font-weight:700;color:var(--accent)">14:12</span><span style="font-size:30px;font-weight:700;line-height:1.35;color:var(--text)">발굴률을 올린 질문만 모아 공통점 분석</span><span style="font-size:48px;font-weight:700;color:var(--sub)">→</span></div><div class="card is-good" style="display:flex;flex-direction:column;gap:18px"><span class="tag">고친 뒤</span><p class="ex" style="margin:0;font-size:34px;line-height:1.35">"집하하는 날 하루 일을 순서대로 알려 주세요."</p><p style="margin:auto 0 0;font-size:30px;font-weight:700;line-height:1.3;color:var(--text)"><span style="display:block;font-size:84px;line-height:1.1;color:var(--accent)"><small style="display:block;font-size:30px;line-height:1.3">발굴률</small>+17%</span>질문 86개 중 오른 질문 3개</p></div></div><p class="band y">바뀐 점: 사건의 세부 대신, 그 사람이 직접 하는 일과 적는 기록을 묻기</p></div>
+    <p class="source">출처: 인터뷰 기록(13:40~14:38), 회고</p>
+    <aside class="notes">마지막에 발굴률이 또 정체 되기 시작했습니다. 하여 이번에는 발굴률이 상승했던 패턴만 다시 조합하여 질문을 던지고 효과를 보았습니다.
+      이렇듯, 처음 저도 대회에 임할때는 딸깍 하면 클로드가 알아서 딸깍 해주겠지 라고 생각했는데, 그렇지 않고 저도 지속적으로 개입하고 고민해보고 방향성을 추가해주던지 방향을 완전 바꿔주는 등 이 필요했습니다.</aside>
+  </section>
+
+  <section class="slide" data-layout="stat" data-cover="P6 P86 P87 P88 P39 P89" data-part="" data-n="19">
+    <div class="rail" style="--t:0.96"><u></u><em></em></div><header class="slide-head"><p class="eyebrow">대회 종료 · 14:48</p><h2 class="headline">14:48 제출, 이때까지만 해도 정말 잘한 줄 알았습니다</h2></header>
+    <div class="slide-body"><div class="grid" style="--l:640px;--r:1fr;gap:56px;align-items:center;flex:1;min-height:0"><img src="assets/self_praise.png" alt="두 사람이 스스로를 끌어안고 있는 셀프 칭찬 100문장 표지 그림" style="width:640px;height:640px;object-fit:contain;border-radius:24px"><div class="col" style="gap:20px"><div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px"><p style="margin:0;font-size:44px;font-weight:700;line-height:1.3;color:var(--text)">오늘의 셀프 칭찬</p><img src="assets/submitted.png" alt="제출 완료 화면: 수고하셨습니다! 대회에 참여해 주셔서 감사합니다" style="height:170px;width:auto;border-radius:16px;margin-right:60px"></div><div style="display:grid;grid-template-columns:250px 1fr;align-items:center;gap:20px;padding:20px 28px;border-radius:20px;background:rgba(255,255,255,0.07)"><span style="font-size:76px;font-weight:700;line-height:1;color:var(--accent)">15<small style="font-size:36px">개</small></span><span style="font-size:34px;font-weight:700;line-height:1.3;color:var(--text)">공개 연습 문제, 전부 통과!</span></div><div style="display:grid;grid-template-columns:250px 1fr;align-items:center;gap:20px;padding:20px 28px;border-radius:20px;background:rgba(255,255,255,0.07)"><span style="font-size:76px;font-weight:700;line-height:1;color:var(--accent)">12.6<small style="font-size:36px">초</small></span><span style="font-size:34px;font-weight:700;line-height:1.3;color:var(--text)">답변 100번 중 95번이 이 안에 도착!</span></div><div style="display:grid;grid-template-columns:250px 1fr;align-items:center;gap:20px;padding:20px 28px;border-radius:20px;background:rgba(255,255,255,0.07)"><span style="font-size:76px;font-weight:700;line-height:1;color:var(--accent)">159<small style="font-size:36px">자</small></span><span style="font-size:34px;font-weight:700;line-height:1.3;color:var(--text)">말풍선은 평균 이만큼, 짧고 깔끔!</span></div><p style="margin:6px 0 0;font-size:34px;font-weight:700;color:var(--accent)">나 자신, 정말 잘했다. 뿌듯하다.</p></div></div></div>
+    <p class="source">출처: 회고, 예선 진행 기록</p>
+    <aside class="notes">마지막 제출전에 확인했을때 내용입니다. 공개 연습 문제, 전부 통과! 100% 정답률, 답변 회신 시간도 12초, 말풍선은 짧고 요점만 깔끔하게! 아주 완벽했습니다. 바로 본선 준비 시작해야겠다 생각했었죠, 이때 까지만 해도요.
+      왜냐? 다시 봐도 대회 페이지에서 안내해주는 TC 15개를 전부 정답률 100%로 통과했으니깐 본선 가야 했었죠..</aside>
+  </section>
+
+  <section class="slide" data-layout="table" data-cover="P1 P91 P92 P90" data-part="fail" data-n="20">
+    <header class="slide-head"><p class="eyebrow">탈락 이유(로그 기반 추정)</p><h2 class="headline">결과는 탈락. 심사 기준 5개 중 정확도 하나가 무너진 것으로 봅니다</h2></header>
+    <div class="slide-body"><div class="grid" style="--l:900px;--r:1fr;align-items:center;flex:1;min-height:0"><table class="data big"><thead><tr><th>심사 기준</th><th>스스로 매긴 판정</th></tr></thead><tbody><tr class=""><td>인터뷰로 찾은 지식</td><td class="ok">○ 좋음</td></tr><tr class=""><td>응답 속도</td><td class="ok">○ 좋음</td></tr><tr class=""><td>말풍선 수</td><td class="ok">○ 좋음</td></tr><tr class=""><td>말풍선 글자 수</td><td class="ok">○ 좋음</td></tr><tr class="bad-row"><td>응답 정확도</td><td class="no">✕ 나쁨</td></tr></tbody></table><div class="card is-bad" style="display:flex;flex-direction:column;gap:18px"><span class="tag">왜 하나가 치명적인가</span><p style="margin:0;font-size:40px;font-weight:700;line-height:1.3;color:var(--text)">속도·말풍선·글자 수 점수는 정확도 점수에 따라 달라집니다</p><p style="margin:0;font-size:28px;line-height:1.4;color:var(--sub)">나머지가 좋아도 전체 점수가 낮아졌을 것으로 봅니다</p></div></div></div>
+    <p class="source">출처: 심사 로그 복기(서버 로그). 공식 점수는 비공개</p>
+    <aside class="notes">심사는 30케이스, 160턴으로 진행됐고 처리·콜백 실패와 500자 초과는 0건이었습니다.
+      위 표와 같이 응답 속도, 말풍선, 글자 수 모두 좋았습니다. 다만, 액션 API 를 단 한번도 호출하지 못했습니다. 단 한번도... 정말 충격적이게 말이죠, 아니 정확히는 호출을 안했습니다. 한마디로 제가 만든 봇은 30케이스, 160턴 동안 헛소리만 했습니다.</aside>
+  </section>
+
+  <section class="slide" data-layout="code" data-cover="P93 P94 P95" data-part="fail" data-n="21">
+    <header class="slide-head"><p class="eyebrow">탈락 이유(로그 기반 추정)</p><h2 class="headline">심사 메시지의 모양이 달라 시험 번호를 읽지 못했습니다</h2></header>
+    <div class="slide-body"><p style="margin:0;font-size:36px;font-weight:700;line-height:1.4;color:var(--text)"><span style="color:var(--accent)">왜 응답 정확도가 나빴나:</span> 주문을 조회·접수하려면 시험 번호가 필요한데, 봇이 그 번호를 읽지 못했습니다</p><div style="display:grid;grid-template-columns:1fr 1.2fr;gap:32px;flex:1;min-height:0;align-items:center"><div class="col" style="gap:14px"><p class="fs">공개 연습 문제 번호에 맞춰 봇이 찾던 표기</p><pre class="code" style="margin:0"><code style="font-size:36px;line-height:1.8">TC ID: L-03
+Test-Case-Id: L-03
+테스트 케이스 L-03
+[L-03]</code></pre></div><div class="col" style="gap:14px"><p class="fs">심사에서 실제로 온 첫 메시지</p><pre class="code" style="margin:0"><code style="font-size:36px;line-height:1.8">case metadata
+<span class="hl-line">- id: L-12</span>
+- 상담 인입 일시: 2037-06-30(화) 11:02
+- 인입창구: 조합몰 1:1 채팅</code></pre></div></div><p class="band y">"TC"라는 글자가 없어서 번호를 찾는 코드가 L-12를 알아보지 못했습니다<br>AI가 번호를 잘못 읽거나 지어낼 위험이 있어 안전을 위해 넣은 코드가, 오히려 문제를 일으켰습니다</p></div>
+    <p class="source">출처: 심사 서버 로그, 봇 코드</p>
+    <aside class="notes">앞에서 말씀드린 시험 번호가 여기서 문제가 됩니다. 조회와 접수를 하려면 이 번호가 꼭 필요합니다. "TC"라는 글자가 없어서 번호를 찾는 코드가 못 잡았습니다. 저는 10시 34분에 직접 쓴 메시지로 "된다"고 확인했습니다. 대회 안내에는 평가 때 대화에서 전달받은 번호를 넣으라고만 적혀 있었고, 어떤 모양으로 오는지는 없었습니다. FAQ에는 "각 평가 시나리오에는 고객이 문의한 날짜가 별도로 제공됩니다"라고도 적혀 있었습니다. 이 메시지의 인입 일시가 그것인데, 서버는 이 메시지를 해석하지 않았습니다. 메시지 글자 자체는 모델에게 그대로 갔지만 봇의 답 본문을 로그에 안 남겨서 모델이 그 값을 답에 썼는지는 모릅니다.</aside>
+  </section>
+
+  <section class="slide" data-layout="flow" data-cover="P86 P96 P97 P98 P99 P100" data-part="fail" data-n="22">
+    <header class="slide-head"><p class="eyebrow">탈락 이유(로그 기반 추정)</p><h2 class="headline">번호를 못 읽자 조회·접수 도구가 전부 막혔습니다</h2></header>
+    <div class="slide-body"><div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;flex:1;min-height:0"><div class="card" style="display:flex;flex-direction:column;gap:12px;justify-content:center"><span style="font-size:150px;font-weight:700;line-height:1;color:var(--text)">160<small style="font-size:56px">턴</small></span><span style="font-size:36px;font-weight:700;line-height:1.35;color:var(--text)">심사 대화 내내 시험 번호를 한 번도 못 읽음</span></div><div class="card" style="display:flex;flex-direction:column;gap:12px;justify-content:center"><span style="font-size:150px;font-weight:700;line-height:1;color:var(--text)">133<small style="font-size:56px">번</small></span><span style="font-size:36px;font-weight:700;line-height:1.35;color:var(--text)">시험 번호가 없어 주문 조회·접수를 담당하는 AI tool call이 모두 실패</span></div><div class="card" style="display:flex;flex-direction:column;gap:12px;justify-content:center"><span style="font-size:150px;font-weight:700;line-height:1;color:var(--accent)">0<small style="font-size:56px">건</small></span><span style="font-size:36px;font-weight:700;line-height:1.35;color:var(--text)">주문을 조회하는 대회 서버(액션 서버)까지 간 요청</span></div></div></div>
+    <p class="source">출처: 심사 로그 복기, 시험 번호 실패 분석</p>
+    <aside class="notes">메시지에서 번호를 뽑는 정규식이 있는데, 번호가 없으면 도구는 서버를 부르지 않고 오류를 돌려주게 만들었습니다. 모델은 72턴에서 조회와 접수를 하려고 133번 시도했고 전부 그 오류를 받았습니다. 메시지 글자는 모델에게 갔으니 모델은 L-12를 봤을 겁니다. 그런데도 도구에 번호를 넘길 칸이 없었던 게 더 아쉽습니다. 안전하려고 일부러 막아 둔 칸입니다. 8건과 40점은 공식 숫자가 아닙니다. 8건은 30건에서 조회와 접수가 필요한 약 22건을 뺀 값이고 40점은 심사 기준으로 스스로 매겨 본 값으로 정해진 산식은 없습니다. 기본값을 비운 건 잘못이 아닙니다. 남겼다면 서른 건 모두 엉뚱한 고객의 주문을 사실처럼 말했을 겁니다.</aside>
+  </section>
+
+  <section class="slide" data-layout="compare" data-cover="P101 P102 P103 P104" data-part="fail" data-n="23">
+    <header class="slide-head"><p class="eyebrow">탈락 이유(로그 기반 추정)</p><h2 class="headline">이음 AI는 성실히 답했지만, 데이터가 없으니 참 답답한 답변이 됐습니다</h2></header>
+    <div class="slide-body"><div style="display:flex;justify-content:center;align-items:center;gap:220px;flex:1;min-height:0"><div class="kakao wide" style="zoom:.53;width:1132px;height:1132px;box-sizing:border-box;flex:none;display:flex;flex-direction:column;justify-content:center;overflow:hidden"><div class="b-them"><i style="background:none;padding:0;overflow:hidden;border-radius:50%"><img src="assets/ieum.jpg" alt="이음 AI 프로필" style="width:100%;height:100%;object-fit:cover;display:block"></i><div><em style="font-size:30px">이음 AI</em><span style="font-size:38px">지금 주문 조회가 되지 않습니다. 재배송을 원하시나요?</span></div></div><div class="b-me"><span style="font-size:38px">조회가 안 된다는 건 그럼 접수가 언제 되는 거예요?</span></div><div class="b-them"><i style="background:none;padding:0;overflow:hidden;border-radius:50%"><img src="assets/ieum.jpg" alt="이음 AI 프로필" style="width:100%;height:100%;object-fit:cover;display:block"></i><div><em style="font-size:30px">이음 AI</em><span style="font-size:38px">결제 내역도 지금은 조회가 되지 않습니다.</span></div></div><div class="b-me"><span style="font-size:38px">그럼 지금은 주문이 살아 있는지도 확인이 안 되는 건가요?</span></div><div class="b-them"><i style="background:none;padding:0;overflow:hidden;border-radius:50%"><img src="assets/ieum.jpg" alt="이음 AI 프로필" style="width:100%;height:100%;object-fit:cover;display:block"></i><div><em style="font-size:30px">이음 AI</em><span style="font-size:38px">여기서는 환불 접수가 어렵습니다. 고객센터로 연락 부탁드립니다.</span></div></div><div class="b-me"><span style="font-size:38px">아니 사진까지 드렸는데 고객센터에 또 전화하라고요?</span></div></div><img src="assets/frustrated.png" alt="그래서 어쩌란 이야기예요 지금 이라는 자막이 달린 방송 화면" style="width:600px;height:600px;object-fit:cover;border-radius:24px;flex:none"></div></div>
+    <p class="source">출처: 심사 서버 로그(고객의 말)</p>
+    <aside class="notes">말풍선에서 고객의 말은 실제 기록이고, 봇의 말은 로그에 없어 고객 반응으로 되짚어 쓴 재구성입니다. 봇이 일을 안 한 것은 아닙니다. 조회하고 접수하려고 계속 시도했는데, 쓸 수 있는 데이터가 없으니 고객 입장에서는 참 답답한 답변이 된 겁니다. 봇의 답은 개인정보와 용량 때문에 로그에 안 남겼는데, 심사관, 그러니까 심사 에이전트가 다음 턴에 한 말이 봇이 뭐라고 했는지 보여 줍니다. 다른 케이스에서도 비슷했습니다. "그럼 지금은 주문이 살아 있는지도 확인이 안 되는 건가요?", "전화까지 해야 돼요?" 고객이 "박스 보면 모르세요?" 하며 사진을 근거로 내밀었는데 봇은 링크 글자만 받았습니다. 봇은 원칙대로 지어내지 않았습니다. 남의 계좌 환불이나 남의 나이 조회 같은 함정도 버틴 것으로 보이지만 일은 못 했습니다. 사진 링크가 온 11케이스에서는 봇이 글만 읽어 사진도 보지 못했습니다.</aside>
+  </section>
+
+  
+
+  <section class="slide" data-layout="compare" data-cover="P109 P110 P111 P112" data-part="end" data-n="24">
+    <header class="slide-head"><p class="eyebrow">정리</p><h2 class="headline">연습 문제는 다 통과했는데, 왜 떨어졌을까?</h2></header>
+    <div class="slide-body" style="position:static;overflow:visible"><img class="s24-st" src="assets/sticker_8.png" alt="물음표를 띄운 캐릭터" style="position:absolute;left:1390px;top:80px;width:100px;height:100px;object-fit:contain;transform:rotate(12deg);filter:drop-shadow(0 0 1.2px rgba(255,255,255,.95));z-index:3"><img class="s24-st" src="assets/sticker_1.png" alt="어두운 기운에 고개 숙인 캐릭터" style="position:absolute;left:900px;top:243px;width:100px;height:100px;object-fit:contain;transform:rotate(-12deg);filter:drop-shadow(0 0 1.2px rgba(255,255,255,.95));z-index:3"><img class="s24-st" src="assets/sticker_2.png" alt="식은땀 흘리며 멍한 캐릭터" style="position:absolute;left:1705px;top:245px;width:95px;height:95px;object-fit:contain;transform:rotate(14deg);filter:drop-shadow(0 0 1.2px rgba(255,255,255,.95));z-index:3"><img class="s24-st" src="assets/sticker_3.png" alt="책상에 엎드린 캐릭터" style="position:absolute;left:25px;top:490px;width:105px;height:105px;object-fit:contain;transform:rotate(-14deg);filter:drop-shadow(0 0 1.2px rgba(255,255,255,.95));z-index:3"><img class="s24-st" src="assets/sticker_4.png" alt="비 맞으며 돌아앉은 캐릭터" style="position:absolute;left:1690px;top:640px;width:110px;height:110px;object-fit:contain;transform:rotate(8deg);filter:drop-shadow(0 0 1.2px rgba(255,255,255,.95));z-index:3"><img class="s24-st" src="assets/sticker_5.png" alt="머리를 감싸 쥐고 놀란 캐릭터" style="position:absolute;left:890px;top:470px;width:95px;height:95px;object-fit:contain;transform:rotate(-15deg);filter:drop-shadow(0 0 1.2px rgba(255,255,255,.95));z-index:3"><img class="s24-st" src="assets/sticker_6.png" alt="소리치며 놀란 캐릭터" style="position:absolute;left:1215px;top:912px;width:90px;height:90px;object-fit:contain;transform:rotate(10deg);filter:drop-shadow(0 0 1.2px rgba(255,255,255,.95));z-index:3"><img class="s24-st" src="assets/sticker_7.png" alt="모니터를 함께 보며 놀란 두 캐릭터" style="position:absolute;left:470px;top:912px;width:90px;height:90px;object-fit:contain;transform:rotate(-6deg);filter:drop-shadow(0 0 1.2px rgba(255,255,255,.95));z-index:3"><img class="s24-st" src="assets/sticker_9.png" alt="입틀막하며 우는 캐릭터" style="position:absolute;left:845px;top:860px;width:105px;height:105px;object-fit:contain;transform:rotate(12deg);filter:drop-shadow(0 0 1.2px rgba(255,255,255,.95));z-index:3"><div class="s24-card" style="position:absolute;left:120px;top:275px;width:820px;height:296px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;transform:none;padding:24px 38px;border-radius:20px;background:#262626;border:3px solid transparent;z-index:2"><span class="tag">인터뷰</span><p style="margin:14px 0 0;font-size:52px;font-weight:700;line-height:1.25;color:var(--text)">순진하게 정말 손으로 시작했습니다</p><p style="margin:8px 0 0;font-size:36px;line-height:1.35;color:var(--sub)">가이드대로 수작업 하다 뒤늦게 자동화했습니다</p></div><div class="s24-card" style="position:absolute;left:980px;top:275px;width:820px;height:296px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;transform:none;padding:24px 38px;border-radius:20px;background:#262626;border:3px solid transparent;z-index:2"><span class="tag">인터뷰</span><p style="margin:14px 0 0;font-size:52px;font-weight:700;line-height:1.25;color:var(--text)">민우의 개입이 늦었습니다</p><p style="margin:8px 0 0;font-size:36px;line-height:1.35;color:var(--sub)">에이전트가 함정에 빠졌을 때 적절히 개입해야 했는데, 딸깍만 바라보다 그 시점이 늦었습니다.</p></div><div class="s24-card" style="position:absolute;left:120px;top:612px;width:820px;height:296px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;transform:none;padding:24px 38px;border-radius:20px;background:#262626;border:3px solid transparent;z-index:2"><span class="tag">봇</span><p style="margin:14px 0 0;font-size:52px;font-weight:700;line-height:1.25;color:var(--text)">공식 예시 문제만 믿었습니다</p><p style="margin:8px 0 0;font-size:36px;line-height:1.35;color:var(--sub)">심사 입력은 달랐고, 예시가 함정이었던 것 같습니다</p></div><div class="s24-card" style="position:absolute;left:980px;top:612px;width:820px;height:296px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;transform:none;padding:24px 38px;border-radius:20px;background:#262626;border:3px solid transparent;z-index:2"><span class="tag">봇</span><p style="margin:14px 0 0;font-size:52px;font-weight:700;line-height:1.25;color:var(--text)">가드레일을 너무 좁게 쳤습니다</p><p style="margin:8px 0 0;font-size:36px;line-height:1.35;color:var(--sub)">AI의 잘못된 판단을 막으려다, 올바른 판단까지 막았습니다</p></div></div>
+    <p class="source">출처: 회고, 시험 번호 실패 분석</p>
+    <aside class="notes">처음에 드린 질문으로 돌아갑니다. 연습 문제는 다 통과했는데 왜 떨어졌을까. 저는 네 가지 답을 찾았습니다. 공식 사유가 아니라 제 해석입니다. 첫째, 너무 순진하게 손으로 시작했습니다. 대회 안내만 보고 10시 7분부터 11시 20분까지 질문을 손으로 보내고 답을 받아 적었습니다. 처음부터 규칙 안에서 자동화할 방법을 찾았다면 인터뷰에 더 쉽게 접근했을 텐데 아쉽습니다. 둘째, 제 개입이 늦었습니다. 통하는 질문은 12시 50분에서 13시 30분 사이에 이미 나오고 있었는데 제가 14시 12분에야 높아지지 않는 이유를 분석하라고 했습니다. 그사이 13시 40분부터 던진 질문 42개 중 오른 것은 2개였습니다. 에이전트에게 맡겨 두고 사람이 멈춰서 정리하는 시간을 늦게 잡았습니다. 셋째, 공식 예시 문제만 믿고 준비했습니다. 연습 문제에는 번호를 헤더에 넣는 안내와 [사진: 곰팡이 핀 수박] 같은 글자 표기가 있었는데 심사에서는 id: L-12와 실제 사진 링크가 왔습니다. 돌아보면 예시 자체가 함정이었던 것 같습니다. 출제진의 의도는 알 수 없습니다. 공개 페이지에 사진 원본 링크도 있었으니 제가 더 챙겼어야 합니다. 마지막으로 AI가 잘못 판단하지 않게 하려다 가드레일을 너무 좁게 쳤습니다. 번호를 잘못 읽거나 지어내는 일을 막으려고 코드에만 맡겼고 AI에게는 번호를 넘길 칸을 주지 않았습니다. 코드가 번호를 못 찾자 AI는 보고도 쓸 수 없었고 위험을 막으려던 장치가 일 자체를 막았습니다. 게다가 전달 형식을 모른다고 세 군데나 적어 두고도 제가 만든 형식으로만 시험해 통과했습니다. 여러분 AX 작업에 가져가실 것은 둘입니다. 에이전트에게 맡겨도 중간에 멈춰서 정리하는 시간은 사람이 먼저 잡으세요. 그리고 안전장치를 넣었으면 남이 줄 입력으로 시험하세요. 입력 형식을 내가 정하면 시험은 언제나 통과합니다.</aside>
+  </section>
+
+  <section class="slide" data-layout="closing" data-cover="P113 P114" data-part="end" data-n="25">
+    <header class="slide-head"><p class="eyebrow">마무리</p><h2 class="headline">대회 화면은 재현 사이트에서 직접 보실 수 있습니다</h2></header>
+    <div class="slide-body"><div class="grid fullw" style="--l:900px;--r:1fr"><div class="col" style="gap:12px"><a class="shot web" href="site/guide.html" target="_blank"><img src="assets/replica_guide.jpg" alt="재현 사이트 가이드 화면"></a><p class="caption">보관용 재현본 · 2026-10-31 저장 화면 기준 · 실제 대회 사이트 아님</p></div><div class="col" style="gap:14px"><p class="fs">가이드 · 스토리 · 마을 관계자 · 제출 · 규정 · FAQ</p><div class="tiles"><a class="tile" href="site/story.html" target="_blank"><img src="assets/replica_story.jpg" alt="재현 사이트 스토리 화면"><span>스토리</span></a><a class="tile" href="site/villagers.html" target="_blank"><img src="assets/replica_villagers.jpg" alt="재현 사이트 마을 관계자 화면"><span>마을 관계자</span></a><a class="tile" href="site/submit.html" target="_blank"><img src="assets/replica_submit.jpg" alt="재현 사이트 제출 화면"><span>제출</span></a><a class="tile" href="site/rules.html" target="_blank"><img src="assets/replica_rules.jpg" alt="재현 사이트 규정 화면"><span>규정</span></a><a class="tile" href="site/faq.html" target="_blank"><img src="assets/replica_faq.jpg" alt="재현 사이트 FAQ 화면"><span>FAQ</span></a><a class="golink" href="site/index.html" target="_blank">site/index.html ↗</a></div></div></div></div>
+    <p class="source">출처: 재현 사이트(저장 화면 기준, 실제 대회 사이트 아님)</p>
+    <aside class="notes">실제 대회 페이지를 따라 만든 정적 사이트이고 화면 위에 "보관용 재현본 · 2026-10-31 저장 화면 기준 · 실제 대회 사이트 아님"이 붙어 있습니다. 궁금하시면 직접 눌러 보십시오. 들어 주셔서 감사합니다.</aside>
+  </section>
+
+</main>
+<div class="hud"><div class="progress"></div></div>
+<nav class="controls" aria-label="슬라이드 이동">
+  <span class="pager"></span>
+  <button type="button" class="nav-btn" data-go="-1" aria-label="이전 슬라이드">◀</button>
+  <button type="button" class="nav-btn" data-go="1" aria-label="다음 슬라이드">▶</button>
+</nav>
+<div class="notes-panel"></div>
+<script>
+(() => {
+  const slides = [...document.querySelectorAll('.slide')];
+  const deck = document.querySelector('.deck');
+  const progress = document.querySelector('.progress');
+  const pager = document.querySelector('.pager');
+  const notesPanel = document.querySelector('.notes-panel');
+  const params = new URLSearchParams(location.search);
+  let current = 0;
+
+  if (params.has('render')) document.body.classList.add('is-render');
+  if (params.has('notes')) document.body.classList.add('show-notes');
+
+  const prevBtn = document.querySelector('.nav-btn[data-go="-1"]');
+  const nextBtn = document.querySelector('.nav-btn[data-go="1"]');
+
+  // PPT 형식: 아래 조작 막대 높이만큼 비워 두고 16:9 슬라이드를 그 위에 맞춘다(렌더 검증 때는 막대 없음)
+  const fit = () => {
+    const bar = document.body.classList.contains('is-render') ? 0 : 56;
+    document.documentElement.style.setProperty('--bar', `${bar}px`);
+    const scale = Math.min(innerWidth / 1920, (innerHeight - bar) / 1080);
+    deck.style.setProperty('--scale', `${scale}`);
+    deck.style.top = `calc(50% - ${bar / 2}px)`;
+  };
+
+  const show = (index) => {
+    current = Math.max(0, Math.min(slides.length - 1, index));
+    slides.forEach((slide, i) => slide.classList.toggle('is-active', i === current));
+    progress.style.width = `${((current + 1) / slides.length) * 100}%`;
+    pager.textContent = `${current + 1} / ${slides.length}`;
+    prevBtn.disabled = current === 0;
+    nextBtn.disabled = current === slides.length - 1;
+    const notes = slides[current].querySelector('.notes');
+    notesPanel.textContent = notes ? notes.textContent.trim() : '(노트 없음)';
+    history.replaceState(null, '', `${location.search}#${current + 1}`);
+    drawPresenter();
+  };
+
+  const fromHash = () => {
+    const n = parseInt(location.hash.slice(1), 10);
+    return Number.isNaN(n) ? 0 : n - 1;
+  };
+
+  // 발표자 창: N 으로 따로 띄운다. 이 창이 그 창을 직접 그리므로 어느 창에서 넘겨도 두 창이 같이 넘어간다
+  let presenter = null;
+  let startedAt = 0;
+  let clockTimer = null;
+  const deckUrl = (n) => `${location.href.split(/[?#]/)[0]}?render#${n}`;
+  const presenterHtml = `<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>발표자 창 · ${document.title}</title><style>
+:root { color-scheme: dark; --fs: 26px; }
+body { margin: 0; height: 100vh; box-sizing: border-box; padding: 16px; display: flex; flex-direction: column; gap: 12px; background: #111; color: #F5F5F5; font: 16px/1.5 -apple-system, "Apple SD Gothic Neo", "Pretendard", sans-serif; }
+.top { display: flex; align-items: center; gap: 20px; font-size: 20px; font-variant-numeric: tabular-nums; }
+.top .page { font-weight: 700; font-size: 24px; }
+.top .grow { flex: 1; }
+.main { flex: 1; min-height: 0; display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: 16px; }
+.left { display: flex; flex-direction: column; gap: 8px; min-height: 0; }
+.label { color: #9A9A9A; font-size: 14px; }
+.frame { position: relative; width: 100%; aspect-ratio: 16 / 9; border-radius: 8px; overflow: hidden; background: #000; }
+.frame.next { width: 64%; }
+.frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; pointer-events: none; }
+.end { color: #9A9A9A; }
+.notes { min-height: 0; overflow: auto; white-space: pre-line; font-size: var(--fs); line-height: 1.6; background: #1C1C1C; border-radius: 8px; padding: 16px 22px; }
+button { font: inherit; font-size: 16px; color: #F5F5F5; background: #2A2A2A; border: 1px solid #3A3A3A; border-radius: 6px; padding: 6px 14px; cursor: pointer; }
+button:disabled { opacity: .35; cursor: default; }
+</style></head><body>
+<div class="top"><span class="page"></span><span>경과 <b class="elapsed">00:00</b></span><button type="button" data-act="reset">시간 초기화</button><span class="grow"></span><span class="clock"></span>
+<button type="button" data-act="smaller" aria-label="노트 글자 작게">A−</button><button type="button" data-act="bigger" aria-label="노트 글자 크게">A+</button>
+<button type="button" data-go="-1" aria-label="이전 슬라이드">◀</button><button type="button" data-go="1" aria-label="다음 슬라이드">▶</button></div>
+<div class="main"><div class="left"><span class="label">지금 장</span><div class="frame"><iframe class="cur" title="지금 장"></iframe></div>
+<span class="label">다음 장</span><div class="frame next"><iframe class="nxt" title="다음 장"></iframe></div><p class="end" hidden>마지막 장입니다</p></div>
+<div class="notes"></div></div></body></html>`;
+
+  const pad = (n) => String(n).padStart(2, '0');
+  const tick = () => {
+    if (!presenter || presenter.closed) { clearInterval(clockTimer); presenter = null; return; }
+    const sec = Math.floor((Date.now() - startedAt) / 1000);
+    const doc = presenter.document;
+    doc.querySelector('.elapsed').textContent = `${pad(Math.floor(sec / 60))}:${pad(sec % 60)}`;
+    doc.querySelector('.clock').textContent = new Date().toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit' });
+  };
+
+  function drawPresenter() {
+    if (!presenter || presenter.closed) return;
+    const doc = presenter.document;
+    const hasNext = current < slides.length - 1;
+    const notes = slides[current].querySelector('.notes');
+    doc.querySelector('.page').textContent = `${current + 1} / ${slides.length}`;
+    doc.querySelector('.notes').textContent = notes ? notes.textContent.trim() : '(노트 없음)';
+    doc.querySelector('.notes').scrollTop = 0;
+    doc.querySelector('.cur').src = deckUrl(current + 1);
+    doc.querySelector('.nxt').src = deckUrl(hasNext ? current + 2 : current + 1);
+    doc.querySelector('.frame.next').hidden = !hasNext;
+    doc.querySelector('.end').hidden = hasNext;
+    doc.querySelector('[data-go="-1"]').disabled = current === 0;
+    doc.querySelector('[data-go="1"]').disabled = !hasNext;
+  }
+
+  const openPresenter = () => {
+    if (presenter && !presenter.closed) { presenter.focus(); return; }
+    presenter = open('', 'dohwaseo-presenter', 'popup,width=1280,height=800');
+    if (!presenter) { document.body.classList.toggle('show-notes'); return; }  // 팝업이 막히면 예전처럼 화면 아래 노트
+    const doc = presenter.document;
+    doc.open(); doc.write(presenterHtml); doc.close();
+    presenter.addEventListener('keydown', onKey);
+    doc.querySelectorAll('[data-go]').forEach((btn) => btn.addEventListener('click', () => show(current + Number(btn.dataset.go))));
+    let fs = 26;
+    const setFs = (v) => { fs = Math.max(16, Math.min(48, v)); doc.documentElement.style.setProperty('--fs', `${fs}px`); };
+    doc.querySelector('[data-act="smaller"]').addEventListener('click', () => setFs(fs - 2));
+    doc.querySelector('[data-act="bigger"]').addEventListener('click', () => setFs(fs + 2));
+    doc.querySelector('[data-act="reset"]').addEventListener('click', () => { startedAt = Date.now(); tick(); });
+    startedAt = Date.now();
+    clearInterval(clockTimer);
+    clockTimer = setInterval(tick, 1000);
+    tick();
+    drawPresenter();
+  };
+
+  function onKey(e) {
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    const inPresenter = e.view !== window;
+    const next = ['ArrowRight', 'ArrowDown', 'PageDown', ' ', 'Enter'];
+    const prev = ['ArrowLeft', 'ArrowUp', 'PageUp', 'Backspace'];
+    if (next.includes(e.key)) { e.preventDefault(); show(current + 1); }
+    else if (prev.includes(e.key)) { e.preventDefault(); show(current - 1); }
+    else if (e.key === 'Home') show(0);
+    else if (e.key === 'End') show(slides.length - 1);
+    else if (e.code === 'KeyN' && !inPresenter) openPresenter();
+    else if (e.key === 'f' && !inPresenter) document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen();
+  }
+
+  addEventListener('keydown', onKey);
+  addEventListener('pagehide', () => { if (presenter && !presenter.closed) presenter.close(); });
+
+  [prevBtn, nextBtn].forEach((btn) => btn.addEventListener('click', () => show(current + Number(btn.dataset.go))));
+
+  let touchX = null;
+  addEventListener('touchstart', (e) => { touchX = e.touches[0].clientX; }, { passive: true });
+  addEventListener('touchend', (e) => {
+    if (touchX === null) return;
+    const dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 50) show(dx < 0 ? current + 1 : current - 1);
+    touchX = null;
+  });
+
+  addEventListener('hashchange', () => { if (fromHash() !== current) show(fromHash()); });
+  addEventListener('resize', fit);
+  fit();
+  show(fromHash());
+})();
+</script>
+</body>
+</html>
